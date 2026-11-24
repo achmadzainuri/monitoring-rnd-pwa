@@ -1,0 +1,19 @@
+{
+  "name": "R&D Project Monitoring",
+  "short_name": "R&D Monitor",
+  "description": "Sistem Monitoring Project, Timeline & Trial R&D",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#f1f5f9",
+  "theme_color": "#1e3a8a",
+  "icons": [
+    {
+      "src": "./icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

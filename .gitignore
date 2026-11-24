@@ -1,0 +1,4 @@
+# Konfigurasi lokal (kunci Supabase disuntikkan otomatis oleh Netlify saat build)
+config.js
+.DS_Store
+Thumbs.db

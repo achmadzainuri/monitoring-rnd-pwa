@@ -1,0 +1,13 @@
+[build]
+  publish = "."
+  command = "printf \"window.APP_CONFIG = { SUPABASE_URL: '%s', SUPABASE_KEY: '%s', APP_TITLE: 'R&D Project Monitoring', SHORT_TITLE: 'R&D Monitoring', DEADLINE_WARNING_DAYS: 3, MAX_FEED_ITEMS: 100, SESSION_STORAGE_KEY: 'rnd_supabase_session_v1' };\\n\" \"$SUPABASE_URL\" \"$SUPABASE_KEY\" > config.js"
+
+[[headers]]
+  for = "/sw.js"
+  [headers.values]
+    Cache-Control = "no-cache, no-store, must-revalidate"
+
+[[headers]]
+  for = "/config.js"
+  [headers.values]
+    Cache-Control = "no-cache, no-store, must-revalidate"
