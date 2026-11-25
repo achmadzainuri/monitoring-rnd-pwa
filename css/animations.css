@@ -1,0 +1,305 @@
+/* =========================================================================
+   LOGIN GLASSMORPHISM, AMBIENT BACKGROUND MOTION & STAGGERED ENTRANCE (v8.0)
+   ========================================================================= */
+
+/* --- Keyframe Animations --- */
+@keyframes ambientGlowFloat1 {
+  0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.85; }
+  50% { transform: translate(35px, 28px) scale(1.12); opacity: 1; }
+}
+
+@keyframes ambientGlowFloat2 {
+  0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.8; }
+  50% { transform: translate(-38px, -24px) scale(1.15); opacity: 1; }
+}
+
+@keyframes pdcaSlowSpin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes waveFlowDash {
+  0% { stroke-dashoffset: 240; }
+  100% { stroke-dashoffset: 0; }
+}
+
+@keyframes nodePulse {
+  0%, 100% { transform: scale(1); opacity: 0.75; }
+  50% { transform: scale(1.35); opacity: 1; }
+}
+
+@keyframes glassCardReveal {
+  0% {
+    opacity: 0;
+    transform: translateY(24px) scale(0.97);
+    filter: blur(6px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+}
+
+@keyframes staggerItemUp {
+  0% {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes shimmerSweep {
+  0% { left: -120%; }
+  100% { left: 160%; }
+}
+
+/* --- Unified Full-Canvas R&D Login Screen --- */
+#login-screen {
+  position: relative;
+  min-height: 100vh;
+  min-height: 100dvh;
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: max(20px, env(safe-area-inset-top)) 20px max(20px, env(safe-area-inset-bottom));
+  background: radial-gradient(circle at 18% 18%, #1e3a8a 0%, #0f172a 58%, #070b14 100%);
+}
+
+.login-bg-svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  opacity: 0.94;
+}
+
+/* Ambient Background Glow Orbs */
+.login-glow-1 {
+  position: absolute;
+  width: 440px;
+  height: 440px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(14, 165, 233, 0.28) 0%, transparent 70%);
+  top: -110px;
+  left: -90px;
+  pointer-events: none;
+  animation: ambientGlowFloat1 11s ease-in-out infinite;
+}
+
+.login-glow-2 {
+  position: absolute;
+  width: 480px;
+  height: 480px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(16, 185, 129, 0.24) 0%, transparent 70%);
+  bottom: -140px;
+  right: -100px;
+  pointer-events: none;
+  animation: ambientGlowFloat2 13s ease-in-out infinite;
+}
+
+/* SVG Vector Ambient Animations */
+.pdca-ring-spin {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: pdcaSlowSpin 48s linear infinite;
+}
+
+.pdca-ring-spin-reverse {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: pdcaSlowSpin 64s linear infinite reverse;
+}
+
+.trajectory-flow {
+  stroke-dasharray: 12 12;
+  animation: waveFlowDash 14s linear infinite;
+}
+
+.innovation-node {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: nodePulse 3.6s ease-in-out infinite;
+}
+.innovation-node:nth-child(2) { animation-delay: 0.8s; }
+.innovation-node:nth-child(3) { animation-delay: 1.6s; }
+.innovation-node:nth-child(4) { animation-delay: 2.4s; }
+
+/* --- Translucent Frosted Glassmorphism Login Card --- */
+.login-glass-card {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 410px;
+  background: linear-gradient(
+    145deg,
+    rgba(15, 23, 42, 0.56) 0%,
+    rgba(30, 58, 138, 0.34) 55%,
+    rgba(15, 23, 42, 0.64) 100%
+  );
+  backdrop-filter: blur(22px) saturate(165%);
+  -webkit-backdrop-filter: blur(22px) saturate(165%);
+  border-radius: 24px;
+  padding: 28px 26px;
+  border: 1px solid rgba(148, 163, 184, 0.26);
+  border-top: 1px solid rgba(255, 255, 255, 0.38);
+  border-left: 1px solid rgba(255, 255, 255, 0.28);
+  box-shadow:
+    0 28px 64px rgba(2, 6, 23, 0.68),
+    inset 0 1px 0 rgba(255, 255, 255, 0.22);
+  color: #f8fafc;
+  animation: glassCardReveal 0.75s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* Staggered Entrance Inside Glass Card */
+.login-glass-card .login-stagger-1 {
+  animation: staggerItemUp 0.55s cubic-bezier(0.22, 1, 0.36, 1) 0.12s both;
+}
+.login-glass-card .login-stagger-2 {
+  animation: staggerItemUp 0.55s cubic-bezier(0.22, 1, 0.36, 1) 0.22s both;
+}
+.login-glass-card .login-stagger-3 {
+  animation: staggerItemUp 0.55s cubic-bezier(0.22, 1, 0.36, 1) 0.32s both;
+}
+.login-glass-card .login-stagger-4 {
+  animation: staggerItemUp 0.55s cubic-bezier(0.22, 1, 0.36, 1) 0.42s both;
+}
+.login-glass-card .login-stagger-5 {
+  animation: staggerItemUp 0.55s cubic-bezier(0.22, 1, 0.36, 1) 0.52s both;
+}
+
+.login-badge-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: rgba(16, 185, 129, 0.16);
+  color: #6ee7b7;
+  border: 1px solid rgba(52, 211, 153, 0.38);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  padding: 4px 10px;
+  border-radius: 999px;
+  margin-bottom: 12px;
+}
+
+.login-glass-card #login-app-title {
+  color: #ffffff !important;
+  text-shadow: 0 2px 10px rgba(2, 6, 23, 0.35);
+}
+
+.login-glass-card .login-subtitle {
+  color: #cbd5e1 !important;
+}
+
+.login-glass-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(148, 163, 184, 0.35), transparent);
+  margin-bottom: 16px;
+}
+
+.login-glass-card .form-group label {
+  color: #e2e8f0;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
+
+.login-glass-card input[type="text"],
+.login-glass-card input[type="password"] {
+  background: rgba(15, 23, 42, 0.48);
+  border: 1px solid rgba(148, 163, 184, 0.32);
+  color: #ffffff;
+  border-radius: 12px;
+  padding: 11px 13px;
+  transition: border-color 0.22s ease, background 0.22s ease, box-shadow 0.22s ease, transform 0.15s ease;
+}
+
+.login-glass-card input[type="text"]::placeholder,
+.login-glass-card input[type="password"]::placeholder {
+  color: rgba(203, 213, 225, 0.58);
+}
+
+.login-glass-card input[type="text"]:focus,
+.login-glass-card input[type="password"]:focus {
+  outline: none;
+  background: rgba(15, 23, 42, 0.72);
+  border-color: #38bdf8;
+  box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.22);
+}
+
+/* Interactive Shimmer Primary Login Button */
+.btn-login-glass {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  margin-top: 6px;
+  padding: 12px;
+  font-size: 14px;
+  font-weight: 700;
+  color: #ffffff;
+  border: 1px solid rgba(56, 189, 248, 0.45);
+  border-radius: 12px;
+  background: linear-gradient(135deg, #0284c7 0%, #2563eb 55%, #059669 100%);
+  box-shadow: 0 10px 24px rgba(2, 132, 199, 0.35);
+  cursor: pointer;
+  transition: transform 0.18s ease, box-shadow 0.22s ease, filter 0.22s ease;
+}
+
+.btn-login-glass::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -120%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.28), transparent);
+  transform: skewX(-22deg);
+}
+
+.btn-login-glass:hover:not(:disabled) {
+  transform: translateY(-1.5px);
+  box-shadow: 0 14px 30px rgba(14, 165, 233, 0.45);
+  filter: brightness(1.06);
+}
+
+.btn-login-glass:hover:not(:disabled)::after {
+  animation: shimmerSweep 0.85s ease forwards;
+}
+
+.btn-login-glass:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.btn-login-glass:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+.login-glass-card .install-btn {
+  background: rgba(56, 189, 248, 0.16);
+  color: #bae6fd;
+  border: 1px solid rgba(56, 189, 248, 0.38);
+}
+
+.login-glass-card .install-btn:hover {
+  background: rgba(56, 189, 248, 0.28);
+}
+
+.login-quote-strip {
+  margin-top: 18px;
+  padding-top: 12px;
+  border-top: 1px solid rgba(148, 163, 184, 0.22);
+  font-size: 11px;
+  color: #cbd5e1;
+  line-height: 1.5;
+  text-align: center;
+}

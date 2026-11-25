@@ -1,9 +1,15 @@
-const CACHE_NAME = 'rnd-monitor-pwa-v7.2';
+const CACHE_NAME = 'rnd-monitor-pwa-v8.0';
 const ASSETS = [
   './',
   './index.html',
   './manifest.json',
-  './icon.svg'
+  './css/style.css',
+  './css/animations.css',
+  './js/auth.js',
+  './js/app.js',
+  './icons/icon.svg',
+  './icons/icon-180.png',
+  './icons/icon-512.png'
 ];
 
 self.addEventListener('install', (event) => {
